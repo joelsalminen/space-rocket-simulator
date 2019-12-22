@@ -25,8 +25,10 @@ const Map = ({ rocket, updateAltitude }) => {
   };
 
   useEffect(() => {
-    connectToSocket();
-  }, []);
+    if (rocket.launched) {
+      connectToSocket();
+    }
+  }, [rocket.launched]);
 
   const renderBlocks = n => {
     return [...Array(n)].map((e, i) => <Block key={i} />);
