@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "set DEBUG=app & nodemon --exec babel-node index.js",
+    "start": "set DEBUG=app & nodemon --exec babel-node server.js",
     "test": "jest --watch"
   },
   "author": "Joel Salminen",
@@ -24,6 +24,7 @@
     "babel-eslint": "^10.0.3",
     "eslint": "^6.8.0",
     "eslint-plugin-react": "^7.17.0",
-    "jest": "^24.9.0"
+    "jest": "^24.9.0",
+    "nodemon": "^2.0.2"
   }
 }
