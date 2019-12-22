@@ -1,24 +1,23 @@
 import express from 'express';
+import * as http from 'http';
+import * as WebSocket from 'ws';
 import { port } from './config.js';
 
 const app = express();
-app.use(express.static('public'));
-app.set('view engine', 'ejs');
+const server = http.createServer(app);
+const wss = new WebSocket.Server({ server });
 
-app.use('*', (req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  res.header(
-    'Access-Control-Allow-Headers',
-    'Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
-  );
-  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
-  next();
+wss.on('connection', ws => {
+  ws.on('message', message => {
+    setInterval(() => {
+      ws.send('hello back');
+    }, 1000);
+    console.log('started');
+  });
+
+  ws.send('hello, im server');
 });
 
-app.get('/api/hello', (req, res) => {
-  res.send('hi');
-});
-
-app.listen(port, () => {
-  console.info(`Running on ${port}...`);
+server.listen(port, () => {
+  console.log('started 3000');
 });
