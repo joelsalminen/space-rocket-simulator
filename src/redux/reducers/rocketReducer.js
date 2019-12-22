@@ -5,6 +5,8 @@ const rocketReducer = (state = initialState.rocket, action) => {
   switch (action.type) {
     case types.UPDATE_ALTITUDE:
       return { ...state, altitude: action.altitude };
+    case types.UPDATE_SPEED:
+      return { ...state, speed: action.speed };
     case types.LAUNCH_ROCKET:
       return { ...state, launched: true };
     default:

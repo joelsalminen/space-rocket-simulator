@@ -2,11 +2,13 @@ import React from 'react';
 import { connect } from 'react-redux';
 import * as rocketActions from '../../redux/actions/rocketActions.js';
 
-const RocketControls = ({ launchRocket }) => {
+const RocketControls = ({ rocket, launchRocket }) => {
   return <button onClick={launchRocket}>Launch</button>;
 };
 
-const mapStateToProps = () => {};
+const mapStateToProps = rocket => {
+  return rocket;
+};
 
 const mapDispatchToProps = {
   launchRocket: rocketActions.launchRocket

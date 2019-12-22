@@ -1,3 +1,3 @@
 module.exports = {
-  rocket: { altitude: 0, launched: false }
+  rocket: { altitude: 0, speed: 0, launched: false }
 };

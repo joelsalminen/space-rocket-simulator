@@ -6,7 +6,7 @@ import * as rocketActions from '../../redux/actions/rocketActions.js';
 
 import './Map.css';
 
-const Map = ({ rocket, updateAltitude }) => {
+const Map = ({ rocket, updateAltitude, updateSpeed }) => {
   const connectToSocket = () => {
     const url = 'ws://localhost:3000';
     const connection = new WebSocket(url);
@@ -16,12 +16,19 @@ const Map = ({ rocket, updateAltitude }) => {
     };
 
     connection.onmessage = e => {
-      updateAltitude(e.data);
+      updateRocketData(e);
     };
 
     connection.onerror = error => {
       console.error('ws error', error);
     };
+  };
+
+  const updateRocketData = e => {
+    const data = e.data.split(';').map(string => Number(string));
+    const [speed, altitude] = data;
+    updateAltitude(altitude);
+    updateSpeed(speed);
   };
 
   useEffect(() => {
@@ -49,7 +56,8 @@ const mapStateToProps = rocket => {
 };
 
 const mapDispatchToProps = {
-  updateAltitude: rocketActions.updateAltitude
+  updateAltitude: rocketActions.updateAltitude,
+  updateSpeed: rocketActions.updateSpeed
 };
 
 export default connect(
