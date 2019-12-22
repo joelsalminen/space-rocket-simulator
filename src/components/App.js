@@ -1,7 +1,10 @@
 import React, { useEffect, useState } from 'react';
+import { connect } from 'react-redux';
+import * as rocketActions from '../redux/actions/rocketActions.js';
 import Map from './Map/Map.js';
 
-const App = () => {
+const App = ({ rocket }) => {
+  console.log(rocket);
   const [altitude, setAltitude] = useState(0);
   const connectToSocket = () => {
     const url = 'ws://localhost:3000';
@@ -28,4 +31,15 @@ const App = () => {
   return <Map altitude={altitude} />;
 };
 
-export default App;
+const mapStateToProps = rocket => {
+  return rocket;
+};
+
+const mapDispatchToProps = {
+  updateAltitude: rocketActions.updateAltitude
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(App);
