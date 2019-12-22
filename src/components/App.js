@@ -1,7 +1,9 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
+import Map from './Map/Map.js';
 
 const App = () => {
-  const a = () => {
+  const [altitude, setAltitude] = useState(0);
+  const connectToSocket = () => {
     const url = 'ws://localhost:3000';
     const connection = new WebSocket(url);
 
@@ -12,6 +14,7 @@ const App = () => {
 
     connection.onmessage = e => {
       console.log(e.data);
+      setAltitude(e.data);
     };
 
     connection.onerror = error => {
@@ -20,9 +23,9 @@ const App = () => {
   };
 
   useEffect(() => {
-    a();
-  });
-  return <div>App</div>;
+    connectToSocket();
+  }, []);
+  return <Map altitude={altitude} />;
 };
 
 export default App;
