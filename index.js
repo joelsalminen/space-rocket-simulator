@@ -1,23 +1,20 @@
 import express from 'express';
 import * as http from 'http';
 import * as WebSocket from 'ws';
-import { port } from './config.js';
+import { port, a } from './config.js';
+import calculations from './utils/calculateAltitude';
+const calculateAltitude = calculations(a);
 
 const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
-
-const calculateLocation = t => {
-  const a = 3;
-  return 0.5 * a * t ** 2;
-};
 
 wss.on('connection', ws => {
   ws.on('message', message => {
     let t = 0;
     console.log(message);
     setInterval(() => {
-      const location = calculateLocation(t);
+      const location = calculateAltitude(t);
       ws.send(location);
       t++;
     }, 1000);
