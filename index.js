@@ -5,8 +5,18 @@ const app = express();
 app.use(express.static('public'));
 app.set('view engine', 'ejs');
 
-app.get('/', (req, res) => {
-  res.render('index', { answer: 59 });
+app.use('*', (req, res, next) => {
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header(
+    'Access-Control-Allow-Headers',
+    'Content-Type,Content-Length, Authorization, Accept,X-Requested-With'
+  );
+  res.header('Access-Control-Allow-Methods', 'PUT,POST,GET,DELETE,OPTIONS');
+  next();
+});
+
+app.get('/api/hello', (req, res) => {
+  res.send('hi');
 });
 
 app.listen(port, () => {
