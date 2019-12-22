@@ -1,11 +1,13 @@
 import React from 'react';
 import './RocketData.css';
 
-const RocketData = props => {
+const RocketData = ({ altitude, speed }) => {
   return (
     <div className="RocketData">
       <p>Altitude: </p>
-      {props.altitude}
+      <p>{altitude} m</p>
+      <p>Speed: </p>
+      <p>{speed} m/s</p>
     </div>
   );
 };

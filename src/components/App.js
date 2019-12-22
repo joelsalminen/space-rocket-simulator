@@ -9,7 +9,7 @@ const App = ({ rocket }) => {
   return (
     <div className="App">
       <Map />
-      <RocketData altitude={rocket.altitude} />
+      <RocketData altitude={rocket.altitude} speed={rocket.speed} />
       <RocketControls />
     </div>
   );
