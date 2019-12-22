@@ -11,8 +11,14 @@ const App = ({ rocket, launchRocket }) => {
   return (
     <div className="App">
       <RocketControls launchRocket={launchRocket} />
-      <Map />
-      <RocketData altitude={rocket.altitude} speed={rocket.speed} />
+      <div style={{ position: 'relative' }}>
+        <Map />
+        <RocketData
+          altitude={rocket.altitude}
+          speed={rocket.speed}
+          launched={rocket.launched}
+        />
+      </div>
     </div>
   );
 };

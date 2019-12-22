@@ -15,4 +15,5 @@
 .RocketControls:disabled {
   background: #c2c1a5;
   border-color: #c2c1a5;
+  cursor: not-allowed;
 }
