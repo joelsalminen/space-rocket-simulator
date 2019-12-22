@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 import Map from './Map/Map.js';
-import AltitudeCounter from './AltitudeCounter/AltitudeCounter.js';
+import RocketData from './RocketData/RocketData.js';
 import RocketControls from './RocketControls/RocketControls.js';
 import './App.css';
 
@@ -9,7 +9,7 @@ const App = ({ rocket }) => {
   return (
     <div className="App">
       <Map />
-      <AltitudeCounter altitude={rocket.altitude} />
+      <RocketData altitude={rocket.altitude} />
       <RocketControls />
     </div>
   );
