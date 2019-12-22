@@ -1,25 +1,56 @@
-import React from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import Block from '../Block/Block.js';
 import Rocket from '../Rocket/Rocket.js';
+import * as rocketActions from '../../redux/actions/rocketActions.js';
+
 import './Map.css';
 
-const Map = ({ altitude }) => {
+const Map = ({ rocket, updateAltitude }) => {
+  const connectToSocket = () => {
+    const url = 'ws://localhost:3000';
+    const connection = new WebSocket(url);
+
+    connection.onopen = () => {
+      connection.send('hello');
+    };
+
+    connection.onmessage = e => {
+      updateAltitude(e.data);
+    };
+
+    connection.onerror = error => {
+      console.error('ws error', error);
+    };
+  };
+
+  useEffect(() => {
+    connectToSocket();
+  }, []);
+
+  const renderBlocks = n => {
+    return [...Array(n)].map((e, i) => <Block key={i} />);
+  };
+
+  const numberOfBlocks = 10;
+
   return (
     <div className="Map">
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Block />
-      <Rocket altitude={altitude} />
+      {renderBlocks(numberOfBlocks)}
+      <Rocket altitude={rocket.altitude} />
     </div>
   );
 };
 
-export default Map;
+const mapStateToProps = rocket => {
+  return rocket;
+};
+
+const mapDispatchToProps = {
+  updateAltitude: rocketActions.updateAltitude
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Map);
