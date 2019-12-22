@@ -2,10 +2,11 @@ import React from 'react';
 import { connect } from 'react-redux';
 import Map from './Map/Map.js';
 import AltitudeCounter from './AltitudeCounter/AltitudeCounter.js';
+import './App.css';
 
 const App = ({ rocket }) => {
   return (
-    <div style={{ position: 'relative' }}>
+    <div className="App">
       <Map />
       <AltitudeCounter altitude={rocket.altitude} />
     </div>

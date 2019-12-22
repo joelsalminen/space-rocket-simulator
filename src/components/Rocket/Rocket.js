@@ -2,7 +2,8 @@ import React from 'react';
 import './Rocket.css';
 
 const Rocket = ({ altitude }) => {
-  return <div className="Rocket" style={{ bottom: `${altitude}px` }}></div>;
+  const rocketStyle = { bottom: `${altitude}px` };
+  return <div className="Rocket" style={rocketStyle}></div>;
 };
 
 export default Rocket;

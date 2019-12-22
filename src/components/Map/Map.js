@@ -32,7 +32,7 @@ const Map = ({ rocket, updateAltitude }) => {
     return [...Array(n)].map((e, i) => <Block key={i} />);
   };
 
-  const numberOfBlocks = 10;
+  const numberOfBlocks = 20;
 
   return (
     <div className="Map">

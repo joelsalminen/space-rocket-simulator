@@ -1,7 +1,7 @@
 import React from 'react';
 import './Block.css';
 
-const Block = props => {
+const Block = () => {
   return <div className="Block"></div>;
 };
 

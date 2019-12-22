@@ -1,10 +1,10 @@
 import React from 'react';
+import './AltitudeCounter.css';
 
 const AltitudeCounter = props => {
   return (
-    <div
-      style={{ display: 'inline-block', position: 'fixed', top: 0, right: 0 }}
-    >
+    <div className="AltitudeCounter">
+      <p>Rocket altitude: </p>
       {props.altitude}
     </div>
   );
