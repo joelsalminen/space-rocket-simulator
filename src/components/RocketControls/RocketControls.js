@@ -1,20 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import * as rocketActions from '../../redux/actions/rocketActions.js';
+import React, { useState } from 'react';
+import './RocketControls.css';
 
-const RocketControls = ({ rocket, launchRocket }) => {
-  return <button onClick={launchRocket}>Launch</button>;
+const RocketControls = ({ launchRocket }) => {
+  const [disabled, setDisabled] = useState(false);
+  const onLaunchClick = () => {
+    setDisabled(true);
+    launchRocket();
+  };
+  return (
+    <button
+      className="RocketControls"
+      onClick={onLaunchClick}
+      disabled={disabled}
+    >
+      Launch
+    </button>
+  );
 };
 
-const mapStateToProps = rocket => {
-  return rocket;
-};
-
-const mapDispatchToProps = {
-  launchRocket: rocketActions.launchRocket
-};
-
-export default connect(
-  mapStateToProps,
-  mapDispatchToProps
-)(RocketControls);
+export default RocketControls;

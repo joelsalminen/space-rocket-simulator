@@ -1,0 +1,18 @@
+.RocketControls {
+  background: #2e294e;
+  color: #f5f9e9;
+  border: 2px solid #2e294e;
+  font-size: 2rem;
+  cursor: pointer;
+  display: block;
+  width: 100%;
+}
+
+.RocketControls:hover {
+  background: #745c97;
+}
+
+.RocketControls:disabled {
+  background: #c2c1a5;
+  border-color: #c2c1a5;
+}
