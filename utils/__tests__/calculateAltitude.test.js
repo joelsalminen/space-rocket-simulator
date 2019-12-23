@@ -1,4 +1,4 @@
-import calculations from './calculateAltitude.js';
+import calculations from '../calculateAltitude.js';
 
 describe('calculateAltitude', () => {
   const calculateAltitude = calculations(3);

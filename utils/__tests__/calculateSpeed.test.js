@@ -1,4 +1,4 @@
-import calculateSpeed from './calculateSpeed.js';
+import calculateSpeed from '../calculateSpeed.js';
 
 describe('calculateSpeed', () => {
   it('should return 0 when the distance is 0', () => {

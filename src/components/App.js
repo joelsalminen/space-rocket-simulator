@@ -1,17 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
+import * as rocketActions from '../redux/actions/rocketActions.js';
+
 import Map from './Map/Map.js';
 import RocketData from './RocketData/RocketData.js';
 import RocketControls from './RocketControls/RocketControls.js';
-import * as rocketActions from '../redux/actions/rocketActions.js';
-
 import './App.css';
 
 const App = ({ rocket, launchRocket }) => {
   return (
     <div className="App">
       <RocketControls launchRocket={launchRocket} />
-      <div style={{ position: 'relative' }}>
+
+      <div className="MapContainer">
         <Map />
         <RocketData
           altitude={rocket.altitude}

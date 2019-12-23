@@ -12,7 +12,7 @@ const Map = ({ rocket, updateAltitude, updateSpeed }) => {
     const connection = new WebSocket(url);
 
     connection.onopen = () => {
-      connection.send('hello');
+      connection.send('Rocket launched');
     };
 
     connection.onmessage = e => {

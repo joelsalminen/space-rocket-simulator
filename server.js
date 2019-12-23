@@ -10,7 +10,7 @@ const app = express();
 const server = http.createServer(app);
 const wss = new WebSocket.Server({ server });
 
-const sendAltitude = ws => {
+const beginSendingRocketData = ws => {
   let t = 0;
   setInterval(() => {
     const altitude = calculateAltitude(t);
@@ -22,7 +22,8 @@ const sendAltitude = ws => {
 
 wss.on('connection', ws => {
   ws.on('message', message => {
-    sendAltitude(ws);
+    console.log(message);
+    beginSendingRocketData(ws);
   });
 });
 
