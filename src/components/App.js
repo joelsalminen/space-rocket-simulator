@@ -7,7 +7,7 @@ import RocketData from './RocketData/RocketData.js';
 import RocketControls from './RocketControls/RocketControls.js';
 import './App.css';
 
-const App = ({ rocket, launchRocket }) => {
+export const App = ({ rocket, launchRocket }) => {
   return (
     <div className="App">
       <RocketControls launchRocket={launchRocket} />
