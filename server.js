@@ -22,11 +22,10 @@ const sendAltitude = ws => {
 
 wss.on('connection', ws => {
   ws.on('message', message => {
-    console.log(message);
     sendAltitude(ws);
   });
 });
 
 server.listen(port, () => {
-  console.info('started 3000');
+  console.info(`Listening on port ${port}`);
 });
